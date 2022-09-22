@@ -1,0 +1,26 @@
+Description: Allow building on hurd
+Author: Scott Howard <showard@debian.org>
+Bug: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=533817
+
+Index: muparser/build/autoconf/aclocal.m4
+===================================================================
+--- muparser.orig/build/autoconf/aclocal.m4	2013-01-26 23:30:49.773669077 -0500
++++ muparser/build/autoconf/aclocal.m4	2013-01-26 23:30:53.421669002 -0500
+@@ -1258,7 +1258,7 @@
+       ;;
+ 
+       powerpc-apple-macos* | \
+-      *-*-freebsd* | *-*-openbsd* | *-*-netbsd* | *-*-k*bsd*-gnu | \
++      *-*-freebsd* | *-*-openbsd* | *-*-netbsd* | *-*-k*bsd*-gnu | *-*-gnu* | \
+       *-*-mirbsd* | \
+       *-*-sunos4* | \
+       *-*-osf* | \
+@@ -1309,7 +1309,7 @@
+     SONAME_FLAG=
+ 
+     case "${BAKEFILE_HOST}" in
+-      *-*-linux* | *-*-freebsd* | *-*-openbsd* | *-*-netbsd* | \
++      *-*-linux* | *-*-gnu* | *-*-freebsd* | *-*-openbsd* | *-*-netbsd* | \
+       *-*-k*bsd*-gnu | *-*-mirbsd* )
+         if test "x$SUNCXX" = "xyes"; then
+             SONAME_FLAG="-h "

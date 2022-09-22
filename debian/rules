@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+#export DH_VERBOSE=1
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+SAVE_FILES = configure
+
+
+%:
+	dh $@
+
+override_dh_update_autotools_config:
+	# Save upstream configs
+	for f in $(SAVE_FILES) ; do                              \
+		if [ ! -f $$f-orig ] ; then mv $$f $$f-orig ; fi \
+	done
+	dh_update_autotools_config
+	bash build/autoconf/acregen.sh
+
+override_dh_auto_configure:
+	dh_auto_configure -- --disable-samples
+
+override_dh_clean:
+	dh_clean
+	# Restore upstream config
+	for f in $(SAVE_FILES) ; do                            \
+		if [ -f $$f-orig ] ; then mv $$f-orig $$f ; fi \
+        done
+
+override_dh_makeshlibs:
+	#pkgkde-symbols helper is managing the symbols file.
+	#Sometimes we'll FTBFS on other arch's toolchains that export or miss
+	#symbols found by the local arch.
+	dh_makeshlibs -- -c0
+

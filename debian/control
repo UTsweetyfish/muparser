@@ -1,0 +1,40 @@
+Source: muparser
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Gudjon I. Gudjonsson <gudjon@gudjon.org>,
+           Scott Howard <showard@debian.org>
+Section: libs
+Priority: optional
+Build-Depends: debhelper (>= 12~),
+               automake
+Standards-Version: 4.3.0
+Vcs-Browser: https://salsa.debian.org/science-team/muparser
+Vcs-Git: https://salsa.debian.org/science-team/muparser.git
+Homepage: http://muparser.sourceforge.net
+
+Package: libmuparser-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends},
+         libmuparser2v5 (= ${binary:Version})
+Description: fast mathematical expressions parse library (development)
+ muParser is a high performance mathematical parser library, written in pure
+ C++. It is based on transforming an expression into a bytecode and
+ precalculating constant parts of it.
+ .
+ This package contains the development files.
+
+Package: libmuparser2v5
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Conflicts: libmuparser2
+Replaces: libmuparser2
+Description: fast mathematical expressions parser library (runtime)
+ muParser is a high performance mathematical parser library, written in pure
+ C++. It is based on transforming an expression into a bytecode and
+ precalculating constant parts of it.
+ .
+ This package contains the files necessary for running applications that use
+ the muParser library.

@@ -1,0 +1,42 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+      Andreas Tille <tille@debian.org>
+Date: Sun, 13 Jan 2019 18:59:59 +0100
+Subject: [PATCH] Fix version number to 2.2.6 in build system.
+
+---
+ Makefile.in                 | 4 ++--
+ build/autoconf/configure.ac | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 157be77..305167c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -139,9 +139,9 @@ COND_WINDOWS_IMPLIB_1___muParser_dll___importlib = \
+ @COND_USE_SOVERSION_0@__muParser_dll___targetsuf2 = .$(SO_SUFFIX)
+ @COND_PLATFORM_MACOSX_0_USE_SOVERCYGWIN_0_USE_SOVERSION_1@__muParser_dll___targetsuf3 \
+ @COND_PLATFORM_MACOSX_0_USE_SOVERCYGWIN_0_USE_SOVERSION_1@	= \
+-@COND_PLATFORM_MACOSX_0_USE_SOVERCYGWIN_0_USE_SOVERSION_1@	.$(SO_SUFFIX).2.2.4
++@COND_PLATFORM_MACOSX_0_USE_SOVERCYGWIN_0_USE_SOVERSION_1@	.$(SO_SUFFIX).2.2.6
+ @COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@__muParser_dll___targetsuf3 \
+-@COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .2.2.4.$(SO_SUFFIX)
++@COND_PLATFORM_MACOSX_1_USE_SOVERSION_1@	= .2.2.6.$(SO_SUFFIX)
+ @COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@__muParser_dll___targetsuf3 \
+ @COND_USE_SOVERSION_1_USE_SOVERSOLARIS_1@	= .$(SO_SUFFIX).2
+ @COND_USE_SOVERCYGWIN_1_USE_SOVERSION_1@__muParser_dll___targetsuf3 \
+diff --git a/build/autoconf/configure.ac b/build/autoconf/configure.ac
+index 85ddd2a..6333a2b 100644
+--- a/build/autoconf/configure.ac
++++ b/build/autoconf/configure.ac
+@@ -6,7 +6,7 @@
+ 
+ # NOTE:
+ #  the version of the project must be updated also in docs/Doxyfile !
+-AC_INIT([muparser], [2.2.4], [muparser@beltoforion.de])
++AC_INIT([muparser], [2.2.6], [muparser@beltoforion.de])
+ 
+ AC_PREREQ([2.57])
+ AC_CONFIG_AUX_DIR([build/autoconf])
+-- 
+2.11.0
+
